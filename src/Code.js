@@ -22,6 +22,10 @@ function getTransactionsAsObjects() {
   return ArrayToObjects(dataArray);
 }
 
+function addTransaction(transaction){
+  
+}
+
 function getBuckets(){
  var dataArray = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Categories').getDataRange().getValues();
   return ArrayToObjects(dataArray);
