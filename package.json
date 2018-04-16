@@ -21,6 +21,8 @@
     "watch": "^1.0.2"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-googleappsscript": "^1.0.0",
     "run-when-changed": "^2.0.3"
   }
 }
