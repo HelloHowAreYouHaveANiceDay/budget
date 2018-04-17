@@ -22,35 +22,6 @@ function getTransactionsAsObjects() {
   return ArrayToObjects(dataArray);
 }
 
-function addTransaction(transaction, ledger){
-
-}
-
-function transactionExists(transaction, ledger){
-  if(transaction.id !== undefined && _.find(ledger, {'id': transaction.id} !== undefined)){
-    Logger.log('id found');
-    return true;
-  } else {
-    for(var i=0; i<ledger.length; i++) {
-      if(ledger[i].TransDate === transaction.TransDate &&
-        ledger[i].PostDate === transaction.PostDate &&
-        ledger[i].Source === transaction.Source &&
-        ledger[i].Description === transaction.Description &&
-        ledger[i].Amount === transaction.Amount
-      ){
-        return true;
-      }
-    }
-    return false;
-  }
-}
-
-function pushTransactions(transactions){
-  for(var i = 0;i<transactions.length;i++){
-    addTransaction(transactions[i]);
-  }
-}
-
 function getBuckets(){
   var dataArray = SpreadsheetApp.getActiveSpreadsheet()
     .getSheetByName('Categories')
@@ -60,25 +31,13 @@ function getBuckets(){
   return ArrayToObjects(dataArray);
 }
 
-function ArrayToObjects(dataArray) {
-  var objects = [];
-  for(var i = dataArray.length - 1; i > 0; i--) {
-    var object = {};
-    for (var j = 0; j < dataArray[0].length; j++){
-      object[dataArray[0][j]] = dataArray[i][j]; 
-    };
-    objects.push(object);
-  };
-  return objects;
-}
-
-function mapAmounts(transactions){
-  transactions.map(function(t){
-    if(t['Transaction Type'] = 'debit'){
-      t.Amount = (0 - t.Amount);
-    }
+function collectionToTable(collection){
+  var table = [];
+  table.push(Object.keys(collection[0]));
+  collection.forEach(function(o){
+    table.push(table[0].map(function(key){return o[key]}));
   })
-  return transactions;
+  return table;
 }
 
 function mapBuckets(transactions){
@@ -89,17 +48,24 @@ function mapBuckets(transactions){
   return transactions;
 }
 
-function outputTransactions(transactions){
-  var newSheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet('Transactions');
-}
 
-function test(){
-  var transactions = getTransactionsAsObjects();
-  //   transactions = mapAmounts(transactions);
-  //   transactions = mapBuckets(transactions);
-  //  var categories = _.uniq(transactions.map(function(t){
-  //    return t.Category
-  //  }))
+function tests(){
+  //SETUP
+  var transactions = MOCK_TRANSACTIONS;
+  var transactionHeaders = Object.keys(transactions[0]);
+  var testLedger = SpreadsheetApp.getActiveSpreadsheet().insertSheet('test-ledger');
+  //Ledger
+  //  addTransaction
+  //  updateTransaction
+  //  deleteTransaction
+  //Account
+  //  addAccount
+  //  updateAccount
+  //  deleteAccount
+  //Category
+  //  addCategory
+  //  updateCategory
+  //  deleteCategory
   var testTransaction = {   
     "Type": 1,   
     "TransDate": "11/13/2017",   
@@ -110,7 +76,12 @@ function test(){
     "Identifier": "f6476045-af8a-4643-b720-56d99a09b6b6" 
   }
 
-  Logger.log(transactionExists(testTransaction, MOCK_TRANSACTIONS));
+  Logger.log(Ledger.transactionExists(testTransaction, MOCK_TRANSACTIONS));
+  Logger.log(collectionToTable(MOCK_TRANSACTIONS));
+
+  //CLEANUP
+  SpreadsheetApp.getActiveSpreadsheet().deleteSheet(testLedger);
+  //debug
   return transactions;
 }
 

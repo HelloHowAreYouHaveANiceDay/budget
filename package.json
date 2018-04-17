@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "Code.js",
+  "watch": {
+    "dev": {
+      "patterns": ["src"]
+    }
+  },
   "scripts": {
-    "dev": "run-when-changed --watch 'src/' --exec 'clasp push'",
+    "watch": "npm-watch",
+    "dev": "clasp push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
