@@ -21,15 +21,21 @@ var Sheet = (function () {
   };
 
   return {
-    addRow: function(){
-
+    addObjectRow: function(sheetName, obj){
+      var sheet = getSheetByName(sheetName);
+      var headers = sheet.getRange(1,1, 1, sheet.getLastColumn()).getValues()[0];
+      var values = [];
+      headers.forEach(function(key){
+        values.push(obj[key])
+      })
+      sheet.getRange(sheet.getLastRow() + 1, 1, 1, values.length).setValues([values]);
     },
     deleteRow: function(){
 
     },
     getHeaders: function (sheetName) {
       var sheet = getSheetByName(sheetName);
-      var headers = sheet.getRange(1,1, 1, headers.length).getValues()[0];
+      var headers = sheet.getRange(1,1, 1, sheet.getLastColumn()).getValues()[0];
       return true;
     },
     setHeaders: function (sheetName, headers) {
@@ -42,7 +48,7 @@ var Sheet = (function () {
       }
     },
     getCollection: function (sheetName) {
-      var dataArray = getSheetByName(sheetName);
+      var dataArray = getSheetByName(sheetName).getDataRange().getValues();
       return arrayToObjects(dataArray);
     },
   };

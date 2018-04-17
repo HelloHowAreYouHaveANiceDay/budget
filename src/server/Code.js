@@ -53,9 +53,10 @@ function tests(){
   //SETUP
   var transactions = MOCK_TRANSACTIONS;
   var transactionHeaders = Object.keys(transactions[0]);
-  var testLedger = SpreadsheetApp.getActiveSpreadsheet().insertSheet('test-ledger');
+//  var testLedger = SpreadsheetApp.getActiveSpreadsheet().insertSheet('test-ledger');
   //Ledger
   //  addTransaction
+  Accountant.addTransactions(transactions);
   //  updateTransaction
   //  deleteTransaction
   //Account
@@ -80,7 +81,7 @@ function tests(){
   Logger.log(collectionToTable(MOCK_TRANSACTIONS));
 
   //CLEANUP
-  SpreadsheetApp.getActiveSpreadsheet().deleteSheet(testLedger);
+//  SpreadsheetApp.getActiveSpreadsheet().deleteSheet(testLedger);
   //debug
   return transactions;
 }
