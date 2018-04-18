@@ -19,6 +19,8 @@ var Ledger = (function (){
         Logger.log('id found');
         return true;
       } else {
+        Logger.log(ledger);
+        Logger.log(transaction);
         for(var i=0; i<ledger.length; i++) {
           if(ledger[i].TransDate === transaction.TransDate &&
             ledger[i].PostDate === transaction.PostDate &&
@@ -26,6 +28,7 @@ var Ledger = (function (){
             ledger[i].Description === transaction.Description &&
             ledger[i].Amount === transaction.Amount
           ){
+            
             return true;
           }
         }

@@ -1,4 +1,6 @@
 var Sheet = (function () {
+  var compose = function(f, g) { return function(x){ f(g(x)) }};
+
 
   var getSheetByName = function(sheetName){
     var sheet = SpreadsheetApp
@@ -21,6 +23,7 @@ var Sheet = (function () {
   };
 
   return {
+    getActiveSheet: SpreadsheetApp.getActiveSpreadsheet.getSheetByName,
     addObjectRow: function(sheetName, obj){
       var sheet = getSheetByName(sheetName);
       var headers = sheet.getRange(1,1, 1, sheet.getLastColumn()).getValues()[0];
@@ -53,3 +56,9 @@ var Sheet = (function () {
     },
   };
 })();
+
+var test_sheet = function(){
+  Logger.log(
+    Sheet.getActiveSheet('Transactions') === SpreadsheetApp.getActiveSpreadsheet.getSheetByName('Transactions')
+  )
+}

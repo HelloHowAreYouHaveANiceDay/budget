@@ -5,7 +5,9 @@
   "main": "Code.js",
   "watch": {
     "dev": {
-      "patterns": ["src"]
+      "patterns": [
+        "src"
+      ]
     }
   },
   "scripts": {
