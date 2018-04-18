@@ -6,20 +6,22 @@ module.exports = {
   },
   env: {
     browser: true,
-    node: true
+    node: true,
+    'jest/globals': true,
   },
   extends: 'airbnb-base',
   globals: {
     __static: true
   },
   plugins: [
-    'html'
+    'html',
+    'jest'
   ],
   'rules': {
     'global-require': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
-    'linebreak-style: ['error', 'windows'],
+    'linebreak-style': ['error', 'windows'],
     'no-shadow': 0,
     'import/extensions': 0,
     'import/newline-after-import': 0,
