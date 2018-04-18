@@ -1,9 +1,6 @@
 const Papa = require('papaparse');
 const R = require('ramda');
-const fs = require('fs');
-
-// parceCSV :: String -> Object
-const parseCSV = Papa.parse;
+const fs = require('fs-extra');
 
 const getFile = filepath => new Promise((resolve, reject) => {
   fs.readFile(filepath, 'utf-8', (err, data) => {
@@ -12,6 +9,6 @@ const getFile = filepath => new Promise((resolve, reject) => {
   });
 });
 
-const getCSV = R.composeP(parseCSV, getFile);
+const getCSV = R.composeP(Papa.parse, getFile);
 
 module.exports.get = getCSV;
