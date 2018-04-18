@@ -1,4 +1,5 @@
 .DS_Store
+mock_data/*
 dist/electron/*
 dist/web/*
 build/*
