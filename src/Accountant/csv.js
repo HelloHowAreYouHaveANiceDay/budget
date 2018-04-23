@@ -14,7 +14,7 @@ const getFile = filepath => new Promise((resolve, reject) => {
 // pure
 const split = R.curry((delimiter, string) => string.split(delimiter));
 
-const splitLine = split('\n');
+const splitLine = split('\r\n');
 const splitComma = split(',');
 
 const headerRow = R.pipe(splitLine, R.head);

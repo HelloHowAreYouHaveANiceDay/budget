@@ -14,6 +14,7 @@ test('parse csv with transform', () => {
   const path = '../budget/mock_data/test_cc.csv';
   expect.assertions(1);
   return ACCOUNTANT.transformCsv(path).then((data) => {
+    console.log(data);
     expect(typeof data).toBe('object');
   });
 });

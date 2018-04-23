@@ -9,11 +9,12 @@ const changeKeyName = (k1, k2) => (o) => {
 };
 
 const replaceTransDate = changeKeyName('Trans Date', 'TransDate');
+
 const replacePostDate = changeKeyName('Post Date', 'PostDate');
 
 const transform = R.compose(replaceTransDate, replacePostDate);
 
-const transformCsv = R.compose(transform, CSV.get);
+const transformCsv = R.composeP(R.map(transform), CSV.get);
 
 module.exports.changeKeyName = changeKeyName;
 module.exports.transform = transform;
