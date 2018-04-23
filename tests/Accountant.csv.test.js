@@ -10,6 +10,14 @@ test('parse csv with header', () => {
   });
 });
 
+test('parse csv with transform', () => {
+  const path = '../budget/mock_data/test_cc.csv';
+  expect.assertions(1);
+  return ACCOUNTANT.transformCsv(path).then((data) => {
+    expect(typeof data).toBe('object');
+  });
+});
+
 test('map keys from csv import to schema', () => {
   const testData = {
     Type: 'Sale',
