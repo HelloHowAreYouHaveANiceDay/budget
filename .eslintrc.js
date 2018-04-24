@@ -21,7 +21,7 @@ module.exports = {
     'global-require': 0,
     'import/no-unresolved': 0,
     'no-param-reassign': 0,
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 0,
     'no-shadow': 0,
     'import/extensions': 0,
     'import/newline-after-import': 0,

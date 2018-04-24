@@ -29,6 +29,10 @@ let webConfig = {
         }
       },
       {
+        test: /\.scss$/,
+        loader: ["style-loader","css-loader","sass-loader"]
+      },
+      {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
