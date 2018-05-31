@@ -36,6 +36,15 @@ let webConfig = {
         })
       },
       {
+        test: /\.scss$/,
+        use:[
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ] 
+
+      },
+      {
         test: /\.html$/,
         use: 'vue-html-loader'
       },

@@ -13,6 +13,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 /* eslint-enable */
 
+require('./assets/sass/main.scss');
+
 Vue.http = Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
