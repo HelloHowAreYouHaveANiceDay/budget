@@ -7,9 +7,13 @@ import store from './store';
 
 /* eslint-disable */
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
+
 if (process.env.NODE_ENV === 'development') {
+  Vue.prototype.$log = console.log;
   Vue.config.devtools = true;
   require('devtron').install();
+} else {
+  Vue.prototype.$log = () => {};
 }
 /* eslint-enable */
 
