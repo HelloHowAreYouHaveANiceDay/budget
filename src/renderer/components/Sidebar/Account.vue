@@ -1,30 +1,44 @@
 <template>
 <li>
-        <a class="">
+        <p class="">
           <div>
             <p> {{account.name || 'unnamed account'}} </p>
             <p> {{account.version}} </p>
-          </div>
-          <ul>
             <li>
-              <a class="button is-small" @click="selectFolder">select folder</a>
+              <a class="" @click="toggleFolder">browse folders</a>
+            </li>
+          </div>
+          <ul v-if="folderBrowser">
+            <li>
+              <a class="button is-small" @click="selectFolder">add folder</a>
             </li>
             <li v-for="folderId in account.folders" :key="folderId">
-              {{folderId}}
+              <Folder :id="folderId"></Folder>
             </li>
           </ul>
-        </a>
+        </p>
 </li>
 </template>
 
 <script>
 import R from 'ramda';
 
+import Folder from './Folder';
+
 const { dialog } = require('electron').remote;
 export default {
+  name: 'account',
+  data() {
+    return {
+      folderBrowser: false,
+    };
+  },
   props: [
     'id',
   ],
+  components: {
+    Folder,
+  },
   computed: {
     account() {
       return this.$store.state.Accounts.byId[this.id];
@@ -50,6 +64,9 @@ export default {
             folderId,
           });
         });
+    },
+    toggleFolder() {
+      this.folderBrowser = !this.folderBrowser;
     },
   },
 };

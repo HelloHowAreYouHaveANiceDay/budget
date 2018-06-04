@@ -1,6 +1,6 @@
 <template>
   <div>
-    <aside>
+    <aside class="menu">
       <p class="menu-label">
         accounts 
       </p>
