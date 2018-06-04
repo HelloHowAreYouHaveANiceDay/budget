@@ -1,18 +1,26 @@
 <template>
-        <a class="card">
+<li>
+        <a class="">
           <div>
             <p> {{account.name || 'unnamed account'}} </p>
             <p> {{account.version}} </p>
-            <!-- <p> {{folder.path | pathRoot}} </p>
-            <div class="button is-small" @click="scanFolder"> scan </div>
-            <div class="button is-small" @click="convertToAccount"> folder > account</div> -->
           </div>
+          <ul>
+            <li>
+              <a class="button is-small" @click="selectFolder">select folder</a>
+            </li>
+            <li v-for="folderId in account.folders" :key="folderId">
+              {{folderId}}
+            </li>
+          </ul>
         </a>
+</li>
 </template>
 
 <script>
-import path from 'path';
+import R from 'ramda';
 
+const { dialog } = require('electron').remote;
 export default {
   props: [
     'id',
@@ -23,11 +31,26 @@ export default {
     },
   },
   filters: {
-    pathRoot(filepath) {
-      return path.relative(__dirname, filepath);
-    },
   },
   methods: {
+    selectFolder() {
+      dialog.showOpenDialog(
+        {
+          properties: ['openDirectory'],
+        },
+        R.pipe(R.head, this.addFolder),
+      );
+    },
+    addFolder(path) {
+      this.$store.dispatch('addFolder', path)
+        .then((folderId) => {
+          // console.log(folderId);
+          this.$store.dispatch('addFolderToAccount', {
+            id: this.id,
+            folderId,
+          });
+        });
+    },
   },
 };
 </script>

@@ -1,4 +1,5 @@
 import uuid from 'uuid/v4';
+import R from 'ramda';
 
 const state = {
   byId: {},
@@ -12,28 +13,32 @@ const mutations = {
     state.byId[newId] = account;
     state.allIds.push(newId);
   },
+  addFolderToAccount(state, payload) {
+    const newState = R.clone(state.byId);
+    console.log(payload);
+    newState[payload.id].folders.push(payload.folderId);
+    state.byId = newState;
+  },
 };
 
 const actions = {
-  addAccount(context, folderId, options) {
+  addAccount(context, options) {
     const account = {
       name: '',
       version: '0.0.1',
       type: undefined,
       folders: [
-        folderId,
       ],
     };
-    console.log(options);
-    // if (options) {
-
-    // } else {
-
-    // }
-
+    console.log('ignore', options);
     context.commit('addAccount', account);
   },
-
+  addFolderToAccount(context, payload) {
+    return new Promise((resolve) => {
+      context.commit('addFolderToAccount', payload);
+      resolve();
+    });
+  },
 };
 
 export default {

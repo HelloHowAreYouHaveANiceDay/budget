@@ -13,10 +13,8 @@ const state = {
 
 const mutations = {
   addFolder(state, folder) {
-    const newId = uuid();
-    folder.id = newId;
-    state.byId[newId] = folder;
-    state.allIds.push(newId);
+    state.byId[folder.id] = folder;
+    state.allIds.push(folder.id);
   },
   updateScan(state, scanResults) {
     state.byId[scanResults.id].files = scanResults.files;
@@ -27,27 +25,31 @@ const mutations = {
 
 const actions = {
   addFolder(context, folder) {
-    const newFolder = {
-      account: undefined,
-      type: 'record',
-      path: folder,
-      lastScanned: null,
-      filetypes: [],
-      chunksize: undefined,
-      sortBy: undefined,
-      files: [],
-    };
-    const isSamePath = p => p === folder;
+    return new Promise((resolve, reject) => {
+      const isSamePath = p => p === folder;
 
-    const getPathsFromFolders = R.pipe(
-      R.map(R.prop('path')),
-      R.values);
+      const getPathsFromFolders = R.pipe(
+        R.map(R.prop('path')),
+        R.values);
 
-    if (R.none(isSamePath, getPathsFromFolders(context.state.byId))) {
-      context.commit('addFolder', newFolder);
-    } else {
-      console.log('folder exists');
-    }
+      if (R.none(isSamePath, getPathsFromFolders(context.state.byId))) {
+        const newFolder = {
+          id: uuid(),
+          account: undefined,
+          type: 'record',
+          path: folder,
+          lastScanned: null,
+          filetypes: [],
+          chunksize: undefined,
+          sortBy: undefined,
+          files: [],
+        };
+        context.commit('addFolder', newFolder);
+        resolve(newFolder.id);
+      } else {
+        reject(new Error('folder already exists'));
+      }
+    });
   },
   scanFolder(context, id) {
     return new Promise((resolve, reject) => {
