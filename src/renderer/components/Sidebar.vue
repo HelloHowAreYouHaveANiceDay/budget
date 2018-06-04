@@ -1,20 +1,41 @@
 <template>
   <div>
-    <div class="button" @click="selectFolder">select folder</div>
+    <aside>
+      <p class="menu-label">
+        folders
+      </p>
+    <ul class="menu-list">
+      <Folder v-for="folder in folders.folders" 
+      :folder="folder" 
+      :key="folder.path">
+      </Folder>
+    </ul>
+      <div class="button" @click="selectFolder">select folder</div>
+    </aside>
   </div>
 </template>
 
 <script>
-import fs from 'fs-extra';
 import R from 'ramda';
+
+import Folder from './Sidebar/Folder';
 
 const { dialog } = require('electron').remote;
 
 export default {
   name: 'side-bar',
-  components: {},
+  components: {
+    Folder,
+  },
   data() {
     return {};
+  },
+  computed: {
+    folders() {
+      return this.$store.state.Folders;
+    },
+  },
+  filters: {
   },
   methods: {
     selectFolder() {
@@ -24,17 +45,6 @@ export default {
         },
         R.pipe(R.head, this.addFolder),
       );
-    },
-    scanFolder(filepath) {
-      return new Promise((resolve, reject) => {
-        fs.readdir(filepath, 'utf-8', (err, data) => {
-          if (err) {
-            reject(err);
-          }
-          console.log(data);
-          resolve(data);
-        });
-      });
     },
     addFolder(path) {
       this.$store.dispatch('Folders/addFolder', path);

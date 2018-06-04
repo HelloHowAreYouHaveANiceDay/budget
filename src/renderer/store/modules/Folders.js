@@ -1,3 +1,7 @@
+import fs from 'fs';
+
+// const parseFolder = ( ) => {};
+
 const state = {
   name: '',
   version: '',
@@ -14,6 +18,7 @@ const mutations = {
 const actions = {
   addFolder(context, folder) {
     const newFolder = {
+      name: null,
       path: folder,
       type: '',
       filetype: '',
@@ -23,6 +28,17 @@ const actions = {
     };
 
     context.commit('addFolder', newFolder);
+  },
+  scanFolder(context, folder) {
+    return new Promise((resolve, reject) => {
+      fs.readdir(folder.path, 'utf-8', (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        console.log(data);
+        resolve(data);
+      });
+    });
   },
 };
 
