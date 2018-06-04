@@ -1,17 +1,19 @@
 import fs from 'fs';
-
-// const parseFolder = ( ) => {};
+import R from 'ramda';
+import uuid from 'uuid/v4';
 
 const state = {
-  name: '',
-  version: '',
-  root: '',
-  folders: [],
+  folders: {
+    byId: {},
+    allIds: [],
+  },
 };
 
 const mutations = {
   addFolder(state, folder) {
-    state.folders.push(folder);
+    const newId = uuid();
+    state.folders.byId[newId] = folder;
+    state.folders.allIds.push(newId);
   },
 };
 
@@ -26,8 +28,15 @@ const actions = {
       sortBy: '',
       files: [],
     };
-
-    context.commit('addFolder', newFolder);
+    const isSamePath = p => p === folder;
+    const getPaths = R.pipe(R.prop('byId'),
+      R.map(R.prop('path')),
+      R.values);
+    if (R.none(isSamePath, getPaths(context.state.folders))) {
+      context.commit('addFolder', newFolder);
+    } else {
+      console.log('folder exists');
+    }
   },
   scanFolder(context, folder) {
     return new Promise((resolve, reject) => {
@@ -43,7 +52,6 @@ const actions = {
 };
 
 export default {
-  namespaced: true,
   state,
   mutations,
   actions,

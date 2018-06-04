@@ -13,8 +13,13 @@ import path from 'path';
 
 export default {
   props: [
-    'folder',
+    'id',
   ],
+  computed: {
+    folder() {
+      return this.$store.state.Folders.folders.byId[this.id];
+    },
+  },
   filters: {
     pathRoot(filepath) {
       return path.relative(__dirname, filepath);
@@ -22,7 +27,7 @@ export default {
   },
   methods: {
     scanFolder() {
-      this.$store.dispatch('Folders/scanFolder', this.folder);
+      this.$store.dispatch('scanFolder', this.folder);
     },
   },
 };

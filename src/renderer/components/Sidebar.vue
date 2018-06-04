@@ -5,9 +5,9 @@
         folders
       </p>
     <ul class="menu-list">
-      <Folder v-for="folder in folders.folders" 
-      :folder="folder" 
-      :key="folder.path">
+      <Folder v-for="id in folders.allIds" 
+      :id="id" 
+      :key="id">
       </Folder>
     </ul>
       <div class="button" @click="selectFolder">select folder</div>
@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     folders() {
-      return this.$store.state.Folders;
+      return this.$store.state.Folders.folders;
     },
   },
   filters: {
@@ -47,7 +47,7 @@ export default {
       );
     },
     addFolder(path) {
-      this.$store.dispatch('Folders/addFolder', path);
+      this.$store.dispatch('addFolder', path);
     },
   },
 };
