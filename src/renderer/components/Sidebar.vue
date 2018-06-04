@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     folders() {
-      return this.$store.state.Folders.folders;
+      return this.$store.state.Folders;
     },
   },
   filters: {

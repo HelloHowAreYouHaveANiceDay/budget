@@ -17,7 +17,7 @@ export default {
   ],
   computed: {
     folder() {
-      return this.$store.state.Folders.folders.byId[this.id];
+      return this.$store.state.Folders.byId[this.id];
     },
   },
   filters: {
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     scanFolder() {
-      this.$store.dispatch('scanFolder', this.folder);
+      this.$store.dispatch('scanFolder', this.id);
     },
   },
 };

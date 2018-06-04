@@ -1,51 +1,66 @@
 import fs from 'fs';
 import R from 'ramda';
 import uuid from 'uuid/v4';
+import path from 'path';
+
+// takes list of filenames with extensions and returns unique extensions
+const getUniqueFileTypes = R.pipe(R.map(path.parse), R.map(R.prop('ext')), R.uniq);
 
 const state = {
-  folders: {
-    byId: {},
-    allIds: [],
-  },
+  byId: {},
+  allIds: [],
 };
 
 const mutations = {
   addFolder(state, folder) {
     const newId = uuid();
-    state.folders.byId[newId] = folder;
-    state.folders.allIds.push(newId);
+    folder.id = newId;
+    state.byId[newId] = folder;
+    state.allIds.push(newId);
+  },
+  updateScan(state, scanResults) {
+    state.byId[scanResults.id].files = scanResults.files;
+    state.byId[scanResults.id].fileTypes = scanResults.fileTypes;
+    state.byId[scanResults.id].lastScanned = new Date();
   },
 };
 
 const actions = {
   addFolder(context, folder) {
     const newFolder = {
-      name: null,
+      account: undefined,
       path: folder,
-      type: '',
-      filetype: '',
-      chunksize: '',
-      sortBy: '',
+      lastScanned: null,
+      filetypes: [],
+      chunksize: undefined,
+      sortBy: undefined,
       files: [],
     };
     const isSamePath = p => p === folder;
-    const getPaths = R.pipe(R.prop('byId'),
+
+    const getPathsFromFolders = R.pipe(
       R.map(R.prop('path')),
       R.values);
-    if (R.none(isSamePath, getPaths(context.state.folders))) {
+
+    if (R.none(isSamePath, getPathsFromFolders(context.state.byId))) {
       context.commit('addFolder', newFolder);
     } else {
       console.log('folder exists');
     }
   },
-  scanFolder(context, folder) {
+  scanFolder(context, id) {
     return new Promise((resolve, reject) => {
+      const folder = context.state.byId[id];
       fs.readdir(folder.path, 'utf-8', (err, data) => {
         if (err) {
           reject(err);
         }
-        console.log(data);
-        resolve(data);
+        const scanResults = {
+          id,
+          files: data,
+          fileTypes: getUniqueFileTypes(data),
+        };
+        resolve(context.commit('updateScan', scanResults));
       });
     });
   },
