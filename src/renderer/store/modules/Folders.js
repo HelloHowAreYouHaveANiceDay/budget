@@ -29,6 +29,7 @@ const actions = {
   addFolder(context, folder) {
     const newFolder = {
       account: undefined,
+      type: 'record',
       path: folder,
       lastScanned: null,
       filetypes: [],

@@ -1,9 +1,10 @@
 <template>
-        <a>
+        <a class="card">
           <div>
             <p> {{folder.name || 'unnamed folder'}} </p>
             <p> {{folder.path | pathRoot}} </p>
             <div class="button is-small" @click="scanFolder"> scan </div>
+            <div class="button is-small" @click="convertToAccount"> folder > account</div>
           </div>
         </a>
 </template>
@@ -28,6 +29,9 @@ export default {
   methods: {
     scanFolder() {
       this.$store.dispatch('scanFolder', this.id);
+    },
+    convertToAccount() {
+      this.$store.dispatch('addAccount', this.id);
     },
   },
 };
