@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <section>
+    <router-view name="sidebar"></router-view>
+    <router-view name="main"></router-view>
+    </section>
   </div>
 </template>
 

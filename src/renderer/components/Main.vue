@@ -1,21 +1,15 @@
 <template>
   <div>
-    <Nav></Nav>
-    <Sidebar></Sidebar>
     {{message}}
   </div>
 </template>
 
 <script>
   // import SystemInformation from './LandingPage/SystemInformation';
-  import Nav from './Nav';
-  import Sidebar from './Sidebar';
 
   export default {
-    name: 'landing-page',
+    name: 'main',
     components: {
-      Nav,
-      Sidebar,
     },
     data() {
       return {
