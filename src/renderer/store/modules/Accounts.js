@@ -1,7 +1,10 @@
 import uuid from 'uuid/v4';
 import R from 'ramda';
 
+// import CSV from '../../../budget/csv';
+
 const state = {
+  selectedAccount: null,
   byId: {},
   allIds: [],
 };
@@ -15,9 +18,14 @@ const mutations = {
   },
   addFolderToAccount(state, payload) {
     const newState = R.clone(state.byId);
-    console.log(payload);
     newState[payload.id].folders.push(payload.folderId);
     state.byId = newState;
+  },
+  pushTransactions(state, id, transactions) {
+    state.byId[id].transactions.push(transactions);
+  },
+  selectAccount(state, id) {
+    state.selectedAccount = id;
   },
 };
 
@@ -27,6 +35,7 @@ const actions = {
       name: '',
       version: '0.0.1',
       type: undefined,
+      transactions: [],
       folders: [
       ],
     };
@@ -38,6 +47,9 @@ const actions = {
       context.commit('addFolderToAccount', payload);
       resolve();
     });
+  },
+  selectAccount(context, id) {
+    context.commit('selectAccount', id);
   },
 };
 

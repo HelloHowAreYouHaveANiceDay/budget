@@ -1,6 +1,6 @@
 <template>
 <li>
-        <p class="">
+        <a @click="selectThisAccount" class="">
           <div>
             <p> {{account.name || 'unnamed account'}} </p>
             <p> {{account.version}} </p>
@@ -16,7 +16,7 @@
               <Folder :id="folderId"></Folder>
             </li>
           </ul>
-        </p>
+        </a>
 </li>
 </template>
 
@@ -67,6 +67,9 @@ export default {
     },
     toggleFolder() {
       this.folderBrowser = !this.folderBrowser;
+    },
+    selectThisAccount() {
+      this.$store.dispatch('selectAccount', this.id);
     },
   },
 };
