@@ -9,8 +9,7 @@ const currency = require('currency.js');
  *
  * @returns {fn} passthroug
  */
-const trace = R.curry((tag, a) => { console.log('tag', a); return a; }); //eslint-disable-line
-module.exports.trace = trace;
+export const trace = R.curry((tag, a) => { console.log('tag', a); return a; }); //eslint-disable-line
 
 // /////////////////
 // STRING HELPERS //
@@ -22,8 +21,7 @@ module.exports.trace = trace;
  *
  * @returns {object} moment object
  */
-const toDateFromMMDDYYYY = R.partialRight(moment, ['MM-DD-YYYY']);
-module.exports.toDateFromMMDDYYYY = toDateFromMMDDYYYY;
+export const toDateFromMMDDYYYY = R.partialRight(moment, ['MM-DD-YYYY']);
 
 /**
  * checks if string is a parseable as a MM-DD-YYYY format date
@@ -32,8 +30,7 @@ module.exports.toDateFromMMDDYYYY = toDateFromMMDDYYYY;
  *
  * @returns {bool} if parsible date by moment
  */
-const isMMDDYYYY = d => toDateFromMMDDYYYY(d).isValid();
-module.exports.isMMDDYYYY = isMMDDYYYY;
+export const isMMDDYYYY = d => toDateFromMMDDYYYY(d).isValid();
 
 /**
  * isCurrency if string is a parseable currency
@@ -51,8 +48,7 @@ module.exports.isMMDDYYYY = isMMDDYYYY;
  *
  * @returns {object} currency object equal to the amount
  */
-const toCurrency = R.pipe(currency, R.prop('value'));
-module.exports.toCurrency = toCurrency;
+export const toCurrency = R.pipe(currency, R.prop('value'));
 
 // /////////////
 // FN HELPERS //
@@ -80,7 +76,7 @@ const isEqual = R.curry((a, b, c) => R.equals(a(c), b(c)));
  *
  * @returns {array} resulting strings in an array
  */
-module.exports.split = R.curry((delimiter, string) => string.split(delimiter));
+export const split = R.curry((delimiter, string) => string.split(delimiter));
 
 /**
  * returns array with first removed from array
@@ -88,7 +84,7 @@ module.exports.split = R.curry((delimiter, string) => string.split(delimiter));
  *
  * @return {array} array with the 0 index removed
  */
-module.exports.shift = (array) => {
+export const shift = (array) => {
   const arrayClone = array;
   arrayClone.shift();
   return arrayClone;
@@ -101,7 +97,7 @@ module.exports.shift = (array) => {
  *
  * @returns {stirng} string 'ab'
  */
-module.exports.join = (a, b) => R.join('', [a, b]);
+export const join = (a, b) => R.join('', [a, b]);
 
 // //////////////////
 // OBJECT HELPERS //
@@ -114,7 +110,7 @@ module.exports.join = (a, b) => R.join('', [a, b]);
  *
  * @returns {object} cloned object with property added
  */
-module.exports.addProperty = R.curry((object, pair) => {
+export const addProperty = R.curry((object, pair) => {
   const newObject = object;
   const pair1 = pair[1];
   newObject[pair[0]] = pair1;
@@ -135,8 +131,7 @@ const firstVal = o => R.values(o)[0];
  *
  * @returns {array} unique first level keys
  */
-const flatValKeys = R.pipe(R.values, R.map(R.keys), R.flatten, R.uniq);
-module.exports.flatValKeys = flatValKeys;
+export const flatValKeys = R.pipe(R.values, R.map(R.keys), R.flatten, R.uniq);
 
 /**
  * returns the keys of the first value of an object
@@ -144,7 +139,7 @@ module.exports.flatValKeys = flatValKeys;
  *
  * @returns {array} keys
  */
-const firstValKeys = R.pipe(firstVal, R.keys);
+export const firstValKeys = R.pipe(firstVal, R.keys);
 
 /**
  * returns true if object is listable
@@ -172,7 +167,7 @@ const isCollectionOfObjects = R.pipe(R.values, R.map(R.type), R.all(R.equals('Ob
  *
  * @returns {boo} whether it is KeyedTable
  */
-module.exports.isKeyedTable = R.allPass([isListableCollection, isCollectionOfObjects]);
+export const isKeyedTable = R.allPass([isListableCollection, isCollectionOfObjects]);
 
 /**
  * returns keys from Object
@@ -180,8 +175,7 @@ module.exports.isKeyedTable = R.allPass([isListableCollection, isCollectionOfObj
  *
  * @returns {array} keys
  */
-const getKeys = o => Object.keys(o);
-module.exports.getKeys = getKeys;
+export const getKeys = o => Object.keys(o);
 
 // /////////////////////
 // COLLECTION HELPERS //
@@ -193,4 +187,4 @@ module.exports.getKeys = getKeys;
  *
  * @returns {array} unique keys in collection
  */
-module.exports.flatKeys = R.pipe(R.map(getKeys), R.flatten, R.uniq);
+export const flatKeys = R.pipe(R.map(getKeys), R.flatten, R.uniq);
