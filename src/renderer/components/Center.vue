@@ -1,10 +1,10 @@
 <template>
-  <div class="mai">
-    {{message}}
+  <div class="">
+    {{message}} hello
     <div v-for="folder in folders" :key="folder.id" class="section">
       {{folder.path}}
-      <div v-for="file in folder.files">
-        {{file}}
+      <div v-for="file in folder.files" :key="file">
+        file: {{file}}
         <a class="button" @click="readFile(folder.path + '\\' + file)">get files</a>
       </div>
     </div>
@@ -18,7 +18,7 @@
   import Csv from '../../budget/csv.js';
 
   export default {
-    name: 'main',
+    name: 'center',
     components: {
     },
     data() {
@@ -31,7 +31,10 @@
         return this.$store.state.Accounts.byId[this.$store.state.Accounts.selectedAccount];
       },
       folders() {
-        return this.account.folders.map(id => this.$store.state.Folders.byId[id]);
+        if (this.account) {
+          return this.account.folders.map(id => this.$store.getters.getFolderById(id));
+        }
+        return [];
       },
     },
     methods: {

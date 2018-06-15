@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import Nav from '../components/Nav';
 import Sidebar from '../components/Sidebar';
-import Main from '../components/Main';
+import Center from '../components/Center';
 
 Vue.use(Router);
 
@@ -15,7 +15,7 @@ export default new Router({
       components: {
         default: Nav,
         sidebar: Sidebar,
-        main: Main,
+        center: Center,
       },
     },
     {

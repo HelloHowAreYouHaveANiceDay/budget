@@ -3,7 +3,7 @@
     <router-view></router-view>
     <section>
     <router-view name="sidebar"></router-view>
-    <router-view name="main"></router-view>
+    <router-view name="center"></router-view>
     </section>
   </div>
 </template>

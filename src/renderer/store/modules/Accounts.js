@@ -1,4 +1,5 @@
 import uuid from 'uuid/v4';
+import Vue from 'vue';
 import R from 'ramda';
 
 // import CSV from '../../../budget/csv';
@@ -13,7 +14,8 @@ const mutations = {
   addAccount(state, account) {
     const newId = uuid();
     account.id = newId;
-    state.byId[newId] = account;
+    Vue.set(state.byId, newId, account);
+    // state.byId[newId] = account;
     state.allIds.push(newId);
   },
   addFolderToAccount(state, payload) {

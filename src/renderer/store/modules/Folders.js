@@ -1,4 +1,5 @@
 import fs from 'fs';
+import Vue from 'vue';
 import R from 'ramda';
 import uuid from 'uuid/v4';
 import path from 'path';
@@ -13,7 +14,7 @@ const state = {
 
 const mutations = {
   addFolder(state, folder) {
-    state.byId[folder.id] = folder;
+    Vue.set(state.byId, folder.id, folder);
     state.allIds.push(folder.id);
   },
   updateScan(state, scanResults) {
@@ -21,6 +22,10 @@ const mutations = {
     state.byId[scanResults.id].fileTypes = scanResults.fileTypes;
     state.byId[scanResults.id].lastScanned = new Date();
   },
+};
+
+const getters = {
+  getFolderById: state => id => state.byId[id],
 };
 
 const actions = {
@@ -71,6 +76,7 @@ const actions = {
 
 export default {
   state,
+  getters,
   mutations,
   actions,
 };
