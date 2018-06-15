@@ -1,19 +1,17 @@
 <template>
   <div>
-    <aside class="menu">
-      <p class="menu-label">
+    <nav class="panel">
+      <p class="panel-heading">
         accounts 
       </p>
-      <ul>
-        <a class="button" @click="addAccount">add account</a>
-      </ul>
-    <ul class="menu-list">
+      <div class="panel-block">
+        <a class="button is-fullwidth" @click="addAccount">add account</a>
+      </div>
       <Account v-for="id in accounts.allIds" 
       :id="id" 
       :key="id">
       </Account>
-    </ul>
-    </aside>
+    </nav>
   </div>
 </template>
 

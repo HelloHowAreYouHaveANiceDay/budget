@@ -1,6 +1,8 @@
 <template>
-<li>
-        <a @click="selectThisAccount" class="">
+<a class="panel-block">
+  <span class="panel-icon">
+    <font-awesome-icon icon="book" />
+    </span>
           <div>
             <p> {{account.name || 'unnamed account'}} </p>
             <p> {{account.version}} </p>
@@ -16,8 +18,7 @@
               <Folder :id="folderId"></Folder>
             </li>
           </ul>
-        </a>
-</li>
+</a>
 </template>
 
 <script>
