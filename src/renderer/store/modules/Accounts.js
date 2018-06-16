@@ -36,6 +36,11 @@ const mutations = {
   setAccountChart(state, accountChart) {
     Vue.set(state, 'accountChart', accountChart);
   },
+  updateAccount(state, newAccount) {
+    state.byId[newAccount.id] = {
+      ...newAccount,
+    };
+  },
 };
 
 const actions = {
@@ -64,6 +69,9 @@ const actions = {
   },
   setAccountChart(context, accountChart) {
     context.commit('setAccountChart', accountChart);
+  },
+  updateAccount(context, newAccount) {
+    context.commit('updateAccount', newAccount);
   },
 };
 

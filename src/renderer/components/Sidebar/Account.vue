@@ -1,6 +1,6 @@
 <template>
 
-  <div class="panel-block">
+  <a class="panel-block">
 
     <article class="media">
       <figure class="media-left" @click="toggleDetails">
@@ -12,7 +12,8 @@
             <div class="level-left">
               <div class="level-item">
                 <div class="content is-small">
-      {{account.type}} {{account.name || 'unnamed account'}}
+                  <div class="tag">{{account.number}}</div>
+      {{account.name || 'unnamed account'}}
                 </div>
               </div>
             </div>
@@ -29,7 +30,7 @@
         <div v-if="editActive" class="field has-addons">
           <p class="control">
             <span class="select is-small">
-              <select>
+              <select v-model="tempAccount.number">
                 <option v-for="type in accountTypes" :key="type.number">
                   {{type.number}}
                 </option>
@@ -37,7 +38,9 @@
             </span>
           </p>
           <p class="control is-expanded">
-            <input class="input is-small" type="text" placeholder="account name">
+            <input class="input is-small" type="text"
+             v-model="tempAccount.name"
+             placeholder="account name">
           </p>
           <p class="control">
             <a class="button is-small"
@@ -79,7 +82,7 @@
 
     </div>
     </article>
-  </div>
+  </a>
      
 
 
@@ -105,7 +108,6 @@ export default {
       folderBrowser: false,
       editActive: false,
       tempAccount: {
-
       },
     };
   },
@@ -164,10 +166,11 @@ export default {
     //   this.$store.dispatch('selectAccount', this.id);
     // },
     editAccount() {
+      this.tempAccount = R.clone(this.account);
       this.editActive = true;
-      console.log(this.id);
     },
     saveAccount() {
+      this.$store.dispatch('updateAccount', this.tempAccount);
       this.editActive = false;
     },
   },
