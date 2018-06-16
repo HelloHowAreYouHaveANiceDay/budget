@@ -7,6 +7,7 @@ import R from 'ramda';
 const state = {
   byId: {},
   allIds: [],
+  accountChart: null,
 };
 
 const mutations = {
@@ -31,6 +32,9 @@ const mutations = {
   setAccounts(state, accountsState) {
     Vue.set(state, 'byId', accountsState.byId);
     Vue.set(state, 'allIds', accountsState.allIds);
+  },
+  setAccountChart(state, accountChart) {
+    Vue.set(state, 'accountChart', accountChart);
   },
 };
 
@@ -57,6 +61,9 @@ const actions = {
   },
   setAccounts(context, accountsState) {
     context.commit('setAccounts', accountsState);
+  },
+  setAccountChart(context, accountChart) {
+    context.commit('setAccountChart', accountChart);
   },
 };
 

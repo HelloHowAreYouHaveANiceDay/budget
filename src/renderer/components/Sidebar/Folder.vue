@@ -1,24 +1,38 @@
 <template>
-<div>
-        <div class="panel-block"
+<article class="media">
+        <div class="media-left"
             @click="toggleShow">
-            <span class="panel-icon">
             <font-awesome-icon v-show="!show" icon="folder" />
             <font-awesome-icon v-show="show" icon="folder-open" />
-            </span>
-            <p> {{folder.path | pathStub}} </p>
-            <div class="button 
-            scan-folder
-            is-small" 
-            @click="scanFolder"> scan </div>
         </div>
+        <div class="media-content">
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <div class="content is-small">
+                  <p> {{folder.path | pathStub}} </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="level-right">
+              <div>
+                <div class="button 
+                  scan-folder
+                  is-small" 
+                  @click="scanFolder"> scan </div>
+              </div>
+            </div>
+          </nav>
+
         <folder-file v-for="file in folder.files" 
         v-if="show"
         :file-path="folder.path + '\\' + file"
         :account-id="id"
         :key="file">
         </folder-file>
-</div>
+        </div>
+</article>
 </template>
 
 <script>
@@ -62,10 +76,4 @@ export default {
 </script>
 
 <style scoped>
-  .scan-folder{
-  float: right;
-  display: block;
-  overflow: auto;
-  white-space: nowrap;
-}
 </style>

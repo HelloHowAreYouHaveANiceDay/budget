@@ -1,16 +1,29 @@
 <template>
-<div>
-  <div class="panel-block">
-      <span class="panel-icon">
-      <font-awesome-icon icon="file" />
-      </span>
-      {{filePath.split('\\').pop()}}
-      <button class="button is-small"
-      @click="readFile">
-        read file
-      </button>
-  </div>
-</div>
+  <article class="media">
+      <div class="media-left">
+        <span class="panel-icon">
+        <font-awesome-icon icon="file" />
+        </span>
+      </div>
+      <div class="media-content">
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <div class="content is-small">
+                  {{filePath.split('\\').pop()}}
+                </div>
+              </div>
+            </div>
+
+            <div class="level-right">
+              <button class="button is-small"
+              @click="readFile">
+              <font-awesome-icon icon="x-ray" title="read file"/>
+              </button>
+            </div>
+          </nav>
+      </div>
+  </article>
 </template>
 
 <script>

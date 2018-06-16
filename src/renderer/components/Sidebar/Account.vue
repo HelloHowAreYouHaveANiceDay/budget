@@ -1,33 +1,88 @@
 <template>
-<div>
-  <a class="panel-block" @click="toggleDetails">
-    <span class="panel-icon">
-      <font-awesome-icon v-show="!accountDetails" icon="book" />
-      <font-awesome-icon v-show="accountDetails" icon="book-open" />
-      </span>
-      {{account.name || 'unnamed account'}}
-  </a>
-     
-  <div class="panel-block" 
-    @click="toggleFolder"
-    v-show="accountDetails">
-    <span class="panel-icon">
-      <font-awesome-icon v-show="!accountDetails || !folderBrowser" icon="angle-right" />
-      <font-awesome-icon v-show="accountDetails && folderBrowser" icon="angle-down" />
-    </span>
-    <p>
-      folders
-    </p>
-    <div class="add-folder button is-small" 
-    @click="selectFolder">add folder</div>
-  </div>
 
-  <Folder v-for="folderId in account.folders" 
+  <div class="panel-block">
+
+    <article class="media">
+      <figure class="media-left" @click="toggleDetails">
+        <font-awesome-icon v-show="!accountDetails" icon="book" />
+        <font-awesome-icon v-show="accountDetails" icon="book-open" />
+    </figure>
+    <div class="media-content">
+          <nav class="level" v-show="!editActive">
+            <div class="level-left">
+              <div class="level-item">
+                <div class="content is-small">
+      {{account.type}} {{account.name || 'unnamed account'}}
+                </div>
+              </div>
+            </div>
+
+            <div class="level-right">
+              <div>
+          <button class="add-folder button is-small" 
+              @click="editAccount">edit account</button>
+              </div>
+            </div>
+          </nav>
+
+
+        <div v-if="editActive" class="field has-addons">
+          <p class="control">
+            <span class="select is-small">
+              <select>
+                <option v-for="type in accountTypes" :key="type.number">
+                  {{type.number}}
+                </option>
+              </select>
+            </span>
+          </p>
+          <p class="control is-expanded">
+            <input class="input is-small" type="text" placeholder="account name">
+          </p>
+          <p class="control">
+            <a class="button is-small"
+                @click="saveAccount">
+              save
+            </a>
+          </p>
+        </div>
+
+
+    <nav class="level" 
+          v-show="accountDetails">
+
+        <div class="level-left"
+          @click="toggleFolder">
+          <span class="level-item">
+            <font-awesome-icon v-show="!accountDetails || !folderBrowser" icon="folder" />
+            <font-awesome-icon v-show="accountDetails && folderBrowser" icon="folder-open" />
+          </span>
+          <p class="level-item">
+            folders
+          </p>
+        </div>
+
+        <div class="level-right">
+           <p class="leve-item">
+            <div class="add-folder button is-small" 
+            @click="selectFolder">
+            <font-awesome-icon icon="plus" />
+            </div>
+           </p>
+        </div>
+    </nav>
+
+    <Folder v-for="folderId in account.folders" 
           v-show="accountDetails && folderBrowser"
           :key="folderId"
-          :id="folderId"></Folder>
+          :id="folderId"></Folder> 
 
-</div>
+    </div>
+    </article>
+  </div>
+     
+
+
 
 </template>
 
@@ -37,6 +92,9 @@
 import R from 'ramda';
 
 import Folder from './Folder';
+import accountChart from './chartOfAccounts.json';
+
+const sortByNumber = R.sortBy(R.prop('number'));
 
 const { dialog } = require('electron').remote;
 export default {
@@ -45,6 +103,10 @@ export default {
     return {
       accountDetails: false,
       folderBrowser: false,
+      editActive: false,
+      tempAccount: {
+
+      },
     };
   },
   props: [
@@ -57,6 +119,19 @@ export default {
     account() {
       return this.$store.state.Accounts.byId[this.id];
     },
+    accountTypes() {
+      const chart = this.$store.state.Accounts.accountChart;
+      if (chart) {
+        return sortByNumber(chart);
+      }
+      return null;
+    },
+  },
+  mounted() {
+    if (this.accountTypes === null) {
+      console.log(this.accountTypes);
+      this.$store.dispatch('setAccountChart', accountChart);
+    }
   },
   filters: {
   },
@@ -85,15 +160,22 @@ export default {
     toggleDetails() {
       this.accountDetails = !this.accountDetails;
     },
-    selectThisAccount() {
-      this.$store.dispatch('selectAccount', this.id);
+    // selectThisAccount() {
+    //   this.$store.dispatch('selectAccount', this.id);
+    // },
+    editAccount() {
+      this.editActive = true;
+      console.log(this.id);
+    },
+    saveAccount() {
+      this.editActive = false;
     },
   },
 };
 </script>
 
 <style scoped>
-.add-folder {
-  float: right;
+.media {
+  width: 100%;
 }
 </style>
