@@ -6,8 +6,8 @@
         <router-view name="sidebar"></router-view>
       </div>
     </div>
-    <div class="tile is-parent">
-      <div class="tile is-child">
+    <div class="tile is-parent is-8">
+      <div class="tile is-child card">
       <router-view name="center"></router-view>
       </div>
     </div>

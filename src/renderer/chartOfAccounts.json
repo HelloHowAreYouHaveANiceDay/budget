@@ -1,0 +1,740 @@
+[
+  {
+    "title": "Allowances And Adjustments",
+    "number": "1.3.7",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Liabilities",
+    "number": "2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Accounts Payable And Accrued Liabilities",
+    "number": "2.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Accounts Payable",
+    "number": "2.1.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Accrued Liabilities",
+    "number": "2.1.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Employee-Related Liabilities",
+    "number": "2.1.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Taxes Payable",
+    "number": "2.1.4",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Interest And Dividends Payable",
+    "number": "2.1.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Debt And Capital Lease Obligations",
+    "number": "2.2",
+    "normalBalance": "cr",
+    "definition": "Sum of the carrying values as of the balance sheet date of all long-term debt, which is debt initially having maturities due after one year from the balance sheet date or beyond the operating cycle, if longer, but excluding the portions thereof scheduled to be repaid within one year or the normal operating cycle, if longer plus capital lease obligations due to be paid more than one year after the balance sheet date."
+  },
+  {
+    "title": "Debts",
+    "number": "2.2.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Notes And Loans Payable",
+    "number": "2.2.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Special Assessment Bond",
+    "number": "2.2.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Long-Term Federal Home Loan Bank Advances",
+    "number": "2.2.4",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Capital Lease Obligations",
+    "number": "2.2.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Deferred Revenue And Credits",
+    "number": "2.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Contracts Or Programs",
+    "number": "2.4",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Billings In Excess Of Cost",
+    "number": "2.4.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Derivative Instruments And Hedges",
+    "number": "2.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Derivative Liability",
+    "number": "2.5.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Hedging Liabilities",
+    "number": "2.5.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Energy Marketing Contract Liabilities",
+    "number": "2.5.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Liabilities Other Than Debt",
+    "number": "2.6",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Related Party Liabilities",
+    "number": "2.7",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Related Party Accounts Payable",
+    "number": "2.7.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Related Party Notes Payable",
+    "number": "2.7.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Due To Employees",
+    "number": "2.7.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Due To Officers Or Stockholders",
+    "number": "2.7.4",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Due To Affiliate",
+    "number": "2.7.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Due To Other Related Parties",
+    "number": "2.7.6",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Other Liabilities",
+    "number": "2.8",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Equity",
+    "number": "3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Paid-In Capital",
+    "number": "3.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Common Stock",
+    "number": "3.1.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Preferred Stock",
+    "number": "3.1.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Additional Paid-In Capital",
+    "number": "3.1.3",
+    "normalBalance": "cr",
+    "definition": "Additional paid in capital represents the excess paid by an investor over and above the par-value price of a stock issue and is often included in the contributed surplus account in the shareholders' equity section of a company's balance sheet."
+  },
+  {
+    "title": "Legal Equity (Statutory Capital)",
+    "number": "3.1.4",
+    "normalBalance": "cr",
+    "definition": "The amount of capital and/or surplus required in order for an insurance company to obtain and retain a license to do business. May be stated as a minimum dollar amount or by reference to a solvency ratio or a solvency margin."
+  },
+  {
+    "title": "Appropriated",
+    "number": "3.2.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Unappropriated",
+    "number": "3.2.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Warrants, Rights Outstanding",
+    "number": "3.4.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Other Additional Capital",
+    "number": "3.4.6",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Equity Attributable To Non-Controlling Interest",
+    "number": "3.5",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Revenue",
+    "number": "4",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Goods",
+    "number": "4.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Products And Merchandise",
+    "number": "4.1.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Products",
+    "number": "4.1.1.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Merchandise",
+    "number": "4.1.1.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Services",
+    "number": "4.2",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "General Services",
+    "number": "4.2.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Itemized Services",
+    "number": "4.2.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Other Sales Revenues",
+    "number": "4.2.3.38",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Other Operating Income",
+    "number": "4.3",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Other Recurring Income",
+    "number": "4.3.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Non-Operating Revenues",
+    "number": "6.2.1",
+    "normalBalance": "cr"
+  },
+  {
+    "title": "Assets",
+    "number": "1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Cash And Investments",
+    "number": "1.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Cash And Cash Equivalents",
+    "number": "1.1.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Investments And Securities",
+    "number": "1.1.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Derivative Instruments And Hedges",
+    "number": "1.1.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Capital Leases, Lessor",
+    "number": "1.1.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Restricted Assets",
+    "number": "1.1.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Intercompany Investments",
+    "number": "1.1.6",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Receivables",
+    "number": "1.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Accounts, Notes And Loans",
+    "number": "1.2.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Notes And Loans Receivable",
+    "number": "1.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Receivables With Imputed Interest",
+    "number": "1.2.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Contracts Or Programs",
+    "number": "1.2.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Receivables",
+    "number": "1.2.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Inventory",
+    "number": "1.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Merchandise, Material And Supplies",
+    "number": "1.3.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Work In Process",
+    "number": "1.3.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Finished Goods",
+    "number": "1.3.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Capitalized Contract Cost",
+    "number": "1.3.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Inventory",
+    "number": "1.3.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Inventory For Long-Term Contracts Or Programs",
+    "number": "1.3.6",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Accrued, Deferred And Other Assets",
+    "number": "1.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Prepaid Expense",
+    "number": "1.4.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Returnable Deposits",
+    "number": "1.4.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Accrued Revenue",
+    "number": "1.4.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Deferred Costs",
+    "number": "1.4.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Accrued And Deferred Assets",
+    "number": "1.4.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Investments And Other Assets",
+    "number": "1.4.6",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Property, Plant And Equipment",
+    "number": "1.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Land, Buildings And Improvements",
+    "number": "1.5.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Machinery And Equipment",
+    "number": "1.5.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Property, Plant And Equipment",
+    "number": "1.5.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Assets Under Construction",
+    "number": "1.5.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Intangible Assets",
+    "number": "1.6",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Intangible Assets Excluding Goodwill",
+    "number": "1.6.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Goodwill",
+    "number": "1.6.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Acquisitions In Progress",
+    "number": "1.6.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Retained Earnings Deficit",
+    "number": "3.2.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Impairment Debt Securities",
+    "number": "3.3.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Unearned Sop Shares",
+    "number": "3.4.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Receivable From Officers, Directors For Issuance Of Capital Stock",
+    "number": "3.4.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Receivable From Shareholders Or Affiliates For Issuance Of Capital Stock",
+    "number": "3.4.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Stockholders' Equity Note, Subscriptions Receivable",
+    "number": "3.4.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Treasury Stock",
+    "number": "3.4.7",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Allowances, Discounts",
+    "number": "4.1.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Returns, Allowances",
+    "number": "4.1.2.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Sales Discounts (Consideration Paid To Customers)",
+    "number": "4.1.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Allowances, Discounts",
+    "number": "4.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Sales Allowances",
+    "number": "4.2.2.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Sales Discounts",
+    "number": "4.2.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Expenses",
+    "number": "5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Expenses Classified By Function",
+    "number": "5.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Cost Of Revenue",
+    "number": "5.1.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Cost Of Goods Sold",
+    "number": "5.1.1.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Cost Of Services Rendered",
+    "number": "5.1.1.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Costs Of Sales",
+    "number": "5.1.1.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Selling, General, Administrative",
+    "number": "5.1.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Selling And Marketing",
+    "number": "5.1.2.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "General, Administrative Expenses",
+    "number": "5.1.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Operating Expenses",
+    "number": "5.1.2.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Doubtful Accounts",
+    "number": "5.1.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Expenses Classified By Nature",
+    "number": "5.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Merchandise, Material, Supplies And Utilities",
+    "number": "5.2.1",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Employee Benefits",
+    "number": "5.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Services",
+    "number": "5.2.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Rent, Depreciation, Amortization And Depletion",
+    "number": "5.2.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Taxes And Fees",
+    "number": "5.2.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Other Expenses",
+    "number": "5.2.6",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Restructuring Charge",
+    "number": "6.1.3",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Inventory Write-Downs (Not Recognized In Cost Of Sales)",
+    "number": "6.1.4",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Impairment Charge",
+    "number": "6.1.5",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Business Combination, Acquisition Related Costs",
+    "number": "6.1.7",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Non-Operating Expenses",
+    "number": "6.2.2",
+    "normalBalance": "dr"
+  },
+  {
+    "title": "Retained Earnings",
+    "number": "3.2",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Suspense Account",
+    "number": "3.2.4",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Accumulated Other Comprehensive Income",
+    "number": "3.3",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Foreign Currency Translation Gain (Loss)",
+    "number": "3.3.1",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Available For Sale Securities Gain (Loss)",
+    "number": "3.3.2",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Cash Flow Hedges Gain (Loss)",
+    "number": "3.3.4",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Defined Benefit Plan Income (Loss)",
+    "number": "3.3.5",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Other Equity",
+    "number": "3.4",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Additional Items",
+    "number": "3.4.8",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Other Revenue, Expenses, Gains And Losses",
+    "number": "6",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Gains And Losses",
+    "number": "6.1",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Foreign Currency",
+    "number": "6.1.1",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Other Non-Operating Income Or Loss",
+    "number": "6.1.2",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Extinguishment Of Debt",
+    "number": "6.1.6",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Gain (Loss) Related To Litigation Settlement",
+    "number": "6.1.8",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Asset Retirement Obligation",
+    "number": "6.1.9",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Unusual And/Or Infrequent Items",
+    "number": "6.1.10",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Additional Itemized Gains And Losses",
+    "number": "6.1.11",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Non-Operating Revenues, Expenses",
+    "number": "6.2",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Non-Monetary Transactions",
+    "number": "6.3",
+    "normalBalance": "dr/cr"
+  },
+  {
+    "title": "Income Tax (Benefit)",
+    "number": "7",
+    "normalBalance": "dr/cr"
+  }
+]

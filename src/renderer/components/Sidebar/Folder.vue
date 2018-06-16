@@ -3,18 +3,19 @@
         <div class="panel-block"
             @click="toggleShow">
             <span class="panel-icon">
-            <font-awesome-icon icon="angle-right" />
-            </span>
-            <span class="panel-icon">
-            <font-awesome-icon icon="folder" />
+            <font-awesome-icon v-show="!show" icon="folder" />
+            <font-awesome-icon v-show="show" icon="folder-open" />
             </span>
             <p> {{folder.path | pathStub}} </p>
-            <div class="button is-small" @click="scanFolder"> scan </div>
-
+            <div class="button 
+            scan-folder
+            is-small" 
+            @click="scanFolder"> scan </div>
         </div>
         <folder-file v-for="file in folder.files" 
         v-if="show"
         :file-path="folder.path + '\\' + file"
+        :account-id="id"
         :key="file">
         </folder-file>
 </div>
@@ -59,3 +60,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .scan-folder{
+  float: right;
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+}
+</style>

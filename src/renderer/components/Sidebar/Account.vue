@@ -2,7 +2,8 @@
 <div>
   <a class="panel-block" @click="toggleDetails">
     <span class="panel-icon">
-      <font-awesome-icon icon="book" />
+      <font-awesome-icon v-show="!accountDetails" icon="book" />
+      <font-awesome-icon v-show="accountDetails" icon="book-open" />
       </span>
       {{account.name || 'unnamed account'}}
   </a>
@@ -11,7 +12,8 @@
     @click="toggleFolder"
     v-show="accountDetails">
     <span class="panel-icon">
-      <font-awesome-icon icon="angle-right" />
+      <font-awesome-icon v-show="!accountDetails || !folderBrowser" icon="angle-right" />
+      <font-awesome-icon v-show="accountDetails && folderBrowser" icon="angle-down" />
     </span>
     <p>
       folders
