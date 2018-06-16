@@ -2,8 +2,11 @@
   <div>
     <nav class="panel">
       <p class="panel-heading">
-        accounts 
+        <span>
+          accounts 
+        </span>
       </p>
+      <config/>
       <div class="panel-block">
         <a class="button is-fullwidth" @click="addAccount">add account</a>
       </div>
@@ -18,6 +21,7 @@
 <script>
 
 import Folder from './Sidebar/Folder';
+import Config from './Sidebar/Config';
 import Account from './Sidebar/Account';
 
 export default {
@@ -25,6 +29,7 @@ export default {
   components: {
     Folder,
     Account,
+    Config,
   },
   data() {
     return {};

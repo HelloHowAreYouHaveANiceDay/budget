@@ -22,6 +22,10 @@ const mutations = {
     state.byId[scanResults.id].fileTypes = scanResults.fileTypes;
     state.byId[scanResults.id].lastScanned = new Date();
   },
+  setFolders(state, foldersState) {
+    Vue.set(state, 'byId', foldersState.byId);
+    Vue.set(state, 'allIds', foldersState.allIds);
+  },
 };
 
 const getters = {
@@ -71,6 +75,9 @@ const actions = {
         resolve(context.commit('updateScan', scanResults));
       });
     });
+  },
+  setFolders(context, foldersState) {
+    context.commit('setFolders', foldersState);
   },
 };
 

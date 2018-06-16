@@ -6,10 +6,6 @@
 
 <script>
   // import SystemInformation from './LandingPage/SystemInformation';
-  import fs from 'fs-extra';
-
-  import Csv from '../../budget/csv.js';
-
   export default {
     name: 'center',
     components: {
@@ -31,13 +27,6 @@
       },
     },
     methods: {
-      readFile(filepath) {
-        fs.readFile(filepath, 'utf-8', (err, data) => {
-          // if (err) { reject(err); }
-          console.log(Csv.parse(data));
-        });
-        console.log(filepath);
-      },
     },
   };
 </script>

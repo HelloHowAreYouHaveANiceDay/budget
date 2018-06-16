@@ -5,7 +5,6 @@ import R from 'ramda';
 // import CSV from '../../../budget/csv';
 
 const state = {
-  selectedAccount: null,
   byId: {},
   allIds: [],
 };
@@ -29,6 +28,10 @@ const mutations = {
   selectAccount(state, id) {
     state.selectedAccount = id;
   },
+  setAccounts(state, accountsState) {
+    Vue.set(state, 'byId', accountsState.byId);
+    Vue.set(state, 'allIds', accountsState.allIds);
+  },
 };
 
 const actions = {
@@ -51,6 +54,9 @@ const actions = {
   },
   selectAccount(context, id) {
     context.commit('selectAccount', id);
+  },
+  setAccounts(context, accountsState) {
+    context.commit('setAccounts', accountsState);
   },
 };
 
