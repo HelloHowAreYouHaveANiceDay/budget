@@ -78,6 +78,7 @@
     <Folder v-for="folderId in account.folders" 
           v-show="accountDetails && folderBrowser"
           :key="folderId"
+          :account-id="id"
           :id="folderId"></Folder> 
 
     </div>

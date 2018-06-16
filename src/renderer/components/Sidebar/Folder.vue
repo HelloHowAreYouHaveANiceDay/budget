@@ -28,7 +28,7 @@
         <folder-file v-for="file in folder.files" 
         v-if="show"
         :file-path="folder.path + '\\' + file"
-        :account-id="id"
+        :account-id="accountId"
         :key="file">
         </folder-file>
         </div>
@@ -49,6 +49,7 @@ export default {
   },
   props: [
     'id',
+    'accountId',
   ],
   components: {
     FolderFile,
