@@ -29,6 +29,7 @@
         v-if="show"
         :file-path="folder.path + '\\' + file"
         :account-id="accountId"
+        :folder-id="id"
         :key="file">
         </folder-file>
         </div>

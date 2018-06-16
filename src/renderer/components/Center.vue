@@ -1,5 +1,6 @@
 <template>
-  <div class="table is-fullwidth">
+<div class="card-content">
+  <div class="table is-fullwidth is-bordered is-hoverable">
     <table>
       <thead>
         <tr>
@@ -10,10 +11,22 @@
             account
           </th>
           <th>
+            trans date
+          </th>
+          <th>
+            post date
+          </th>
+          <th>
             debit
           </th>
           <th>
             credit
+          </th>
+          <th>
+            amount
+          </th>
+          <th>
+            description
           </th>
         </tr>
       </thead>
@@ -25,6 +38,7 @@
       </tbody>
     </table>
   </div>
+</div>
 </template>
 
 <script>

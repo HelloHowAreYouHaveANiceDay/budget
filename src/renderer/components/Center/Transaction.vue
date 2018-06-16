@@ -4,13 +4,25 @@
       {{transaction.id}}
     </td>
     <td>
-      <!-- {{account.name}} -->
+      {{account.name}}
     </td>
     <td>
-      <!-- {{transaction.debit | parseAmount}} -->
+      {{transaction.transDate}}
     </td>
     <td>
-      <!-- {{transaction.credit | parseAmount}} -->
+      {{transaction.postDate}}
+    </td>
+    <td>
+      {{transaction.debit}}
+    </td>
+    <td>
+      {{transaction.credit}}
+    </td>
+    <td>
+      {{transaction.amount}}
+    </td>
+    <td>
+      {{transaction.description}}
     </td>
   </tr>
 </template>
@@ -24,15 +36,7 @@ export default {
       return this.$store.state.Transactions.byId[this.id];
     },
     account() {
-      const accountEffected = '';
-      // if (this.transaction.credit.length > 1) {
-      //   accountEffected = this.transaction.credit;
-      // } else {
-      //   accountEffected = this.transaction.debit;
-      // }
-      // console.log(accountEffected);
-      // console.log(this.$store.state.Accounts.byId[accountEffected]);
-      return this.$store.state.Accounts.byId[accountEffected];
+      return this.$store.state.Accounts.byId[this.transaction.account];
     },
   },
   filters: {

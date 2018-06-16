@@ -37,6 +37,7 @@ export default {
   name: 'folder-file',
   props: [
     'filePath',
+    'folderId',
     'accountId',
   ],
   methods: {
@@ -44,10 +45,11 @@ export default {
       fs.readFile(this.filePath, 'utf-8', (err, data) => {
         // if (err) { reject(err); }
         const rawTransactions = d3.csvParse(data);
-        Promise.all(rawTransactions.map(tran => this.$store.dispatch('addTransaction', tran)))
-          .then((result) => {
-            console.log(result);
-          });
+        Promise.all(rawTransactions.map((tran) => {
+          tran.account = this.accountId;
+          tran.folder = this.folderId;
+          return this.$store.dispatch('addTransaction', tran);
+        }));
       });
     },
   },

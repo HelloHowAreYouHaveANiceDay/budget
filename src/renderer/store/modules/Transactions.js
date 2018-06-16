@@ -2,23 +2,7 @@ import Vue from 'vue';
 import R from 'ramda';
 import uuid from 'uuid/v4';
 
-// const convertTransaction = R.curry((acct, t) => {
-//   // console.log(t);
-//   const transaction = {
-//     debit: '',
-//     credit: '',
-//     amount: Math.abs(t.Amount),
-//   };
-
-//   if (t.Amount > 0) {
-//     transaction.credit = acct;
-//   } else {
-//     transaction.debit = acct;
-//   }
-
-//   // console.log(transaction);
-//   return transaction;
-// });
+import accountChart from '../../chartOfAccounts.json';
 
 const transactionTemplate = {
   amount: '',
@@ -26,6 +10,52 @@ const transactionTemplate = {
   postingDate: '',
   referenceNumber: '',
   transactionDate: '',
+};
+
+const transforms = {
+  chase: {
+    toStandard(raw, account) {
+      const newTransaction = R.clone(transactionTemplate);
+      console.log(raw);
+      // newTransaction.amount = Math.abs(raw.Amount);
+      newTransaction.amount = (raw.Amount);
+      newTransaction.account = raw.account;
+      newTransaction.folder = raw.folder;
+      newTransaction.transDate = raw['Trans Date'];
+      newTransaction.postDate = raw['Post Date'];
+      newTransaction.description = raw.Description;
+      newTransaction.accountObject = account;
+      const normalB = R.find(R.propEq('number', account.number))(accountChart).normalBalance;
+      // console.log(normalB);
+      // console.log(accountChart);
+      switch (normalB) {
+        case 'cr':
+          if (raw.Amount > 0) {
+            newTransaction.debit = newTransaction.amount;
+          } else {
+            newTransaction.credit = newTransaction.amount;
+          }
+          break;
+        case 'dr':
+          if (raw.Amount > 0) {
+            newTransaction.debit = newTransaction.amount;
+          } else {
+            newTransaction.credit = newTransaction.amount;
+          }
+          break;
+        case 'dr/cr':
+          if (raw.Amount > 0) {
+
+          } else {
+
+          }
+          break;
+        default:
+          break;
+      }
+      return newTransaction;
+    },
+  },
 };
 
 const state = {
@@ -49,7 +79,7 @@ const mutations = {
       state.allIds.push(newTransaction.id);
       return newTransaction.id;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
   removeTransaction(state, id) {
@@ -61,16 +91,14 @@ const mutations = {
 const actions = {
   addTransaction(context, transaction) {
     return new Promise((resolve, reject) => {
-      const newTransaction = R.clone(transactionTemplate);
-      newTransaction.amount = transaction.Amount;
-      context.commit('addTransaction', newTransaction)
-        .then((result) => {
-          if (result) {
-            resolve(true);
-          } else {
-            reject(new Error('transaction could not be added'));
-          }
-        });
+      try {
+        const account = context.rootState.Accounts.byId[transaction.account];
+        const newTransaction = transforms.chase.toStandard(transaction, account);
+        const id = context.commit('addTransaction', newTransaction);
+        resolve(id);
+      } catch (err) {
+        reject(err);
+      }
     });
   },
 };

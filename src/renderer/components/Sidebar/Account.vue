@@ -96,7 +96,7 @@
 import R from 'ramda';
 
 import Folder from './Folder';
-import accountChart from './chartOfAccounts.json';
+import accountChart from '../../chartOfAccounts.json';
 
 const sortByNumber = R.sortBy(R.prop('number'));
 
