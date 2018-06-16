@@ -1,10 +1,16 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-    <section>
-    <router-view name="sidebar"></router-view>
-    <router-view name="center"></router-view>
-    </section>
+  <div id="app" class="tile is-ancestor">
+    <!-- <router-view></router-view> -->
+    <div class="tile is-parent is-4">
+      <div class="tile is-child">
+        <router-view name="sidebar"></router-view>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <div class="tile is-child">
+      <router-view name="center"></router-view>
+      </div>
+    </div>
   </div>
 </template>
 

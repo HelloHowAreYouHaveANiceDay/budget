@@ -1,13 +1,6 @@
 <template>
   <div class="">
     {{message}} hello
-    <div v-for="folder in folders" :key="folder.id" class="section">
-      {{folder.path}}
-      <div v-for="file in folder.files" :key="file">
-        file: {{file}}
-        <a class="button" @click="readFile(folder.path + '\\' + file)">get files</a>
-      </div>
-    </div>
   </div>
 </template>
 

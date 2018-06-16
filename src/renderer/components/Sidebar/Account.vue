@@ -1,25 +1,35 @@
 <template>
-<a class="panel-block">
-  <span class="panel-icon">
-    <font-awesome-icon icon="book" />
+<div>
+  <a class="panel-block" @click="toggleDetails">
+    <span class="panel-icon">
+      <font-awesome-icon icon="book" />
+      </span>
+      {{account.name || 'unnamed account'}}
+  </a>
+     
+  <div class="panel-block" 
+    @click="toggleFolder"
+    v-show="accountDetails">
+    <span class="panel-icon">
+      <font-awesome-icon icon="angle-right" />
     </span>
-          <div>
-            <p> {{account.name || 'unnamed account'}} </p>
-            <p> {{account.version}} </p>
-            <li>
-              <a class="" @click="toggleFolder">browse folders</a>
-            </li>
-          </div>
-          <ul v-if="folderBrowser">
-            <li>
-              <a class="button is-small" @click="selectFolder">add folder</a>
-            </li>
-            <li v-for="folderId in account.folders" :key="folderId">
-              <Folder :id="folderId"></Folder>
-            </li>
-          </ul>
-</a>
+    <p>
+      folders
+    </p>
+    <div class="add-folder button is-small" 
+    @click="selectFolder">add folder</div>
+  </div>
+
+  <Folder v-for="folderId in account.folders" 
+          v-show="accountDetails && folderBrowser"
+          :key="folderId"
+          :id="folderId"></Folder>
+
+</div>
+
 </template>
+
+
 
 <script>
 import R from 'ramda';
@@ -31,6 +41,7 @@ export default {
   name: 'account',
   data() {
     return {
+      accountDetails: false,
       folderBrowser: false,
     };
   },
@@ -69,9 +80,18 @@ export default {
     toggleFolder() {
       this.folderBrowser = !this.folderBrowser;
     },
+    toggleDetails() {
+      this.accountDetails = !this.accountDetails;
+    },
     selectThisAccount() {
       this.$store.dispatch('selectAccount', this.id);
     },
   },
 };
 </script>
+
+<style scoped>
+.add-folder {
+  float: right;
+}
+</style>
