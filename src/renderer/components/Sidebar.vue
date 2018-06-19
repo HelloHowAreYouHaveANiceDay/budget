@@ -8,7 +8,11 @@
       </p>
       <config/>
       <div class="panel-block">
-        <a class="button is-fullwidth" @click="addAccount">add account</a>
+        <a class="button is-fullwidth" @click="addTransaction">add transaction</a>
+      </div>
+      <div class="panel-block">
+        <!-- <a class="button is-fullwidth is-info" @click="importTransactions">importTransactions</a> -->
+        <import-transaction></import-transaction>
       </div>
       <Account v-for="id in accounts.allIds" 
       :id="id" 
@@ -23,6 +27,7 @@
 import Folder from './Sidebar/Folder';
 import Config from './Sidebar/Config';
 import Account from './Sidebar/Account';
+import ImportTransaction from './Sidebar/ImportTransaction';
 
 export default {
   name: 'side-bar',
@@ -30,6 +35,7 @@ export default {
     Folder,
     Account,
     Config,
+    ImportTransaction,
   },
   data() {
     return {};
@@ -45,7 +51,7 @@ export default {
   filters: {
   },
   methods: {
-    addAccount() {
+    addTransaction() {
       this.$store.dispatch('addAccount');
     },
   },

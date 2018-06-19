@@ -5,8 +5,14 @@ import uuid from 'uuid/v4';
 import accountChart from '../../chartOfAccounts.json';
 
 const transactionTemplate = {
-  amount: '',
-  description: '',
+  account: null,
+  amount: null,
+  description: null,
+  postDate: null,
+  debit: null,
+  credit: null,
+  memo: null,
+  match: null,
 };
 
 const transforms = {
