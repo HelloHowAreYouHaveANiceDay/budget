@@ -7,54 +7,34 @@ import accountChart from '../../chartOfAccounts.json';
 const transactionTemplate = {
   amount: '',
   description: '',
-  postingDate: '',
-  referenceNumber: '',
-  transactionDate: '',
 };
 
 const transforms = {
   chase: {
-    toStandard(raw, account) {
-      const newTransaction = R.clone(transactionTemplate);
-      console.log(raw);
-      // newTransaction.amount = Math.abs(raw.Amount);
-      newTransaction.amount = (raw.Amount);
-      newTransaction.account = raw.account;
-      newTransaction.folder = raw.folder;
-      newTransaction.transDate = raw['Trans Date'];
-      newTransaction.postDate = raw['Post Date'];
-      newTransaction.description = raw.Description;
-      newTransaction.accountObject = account;
-      const normalB = R.find(R.propEq('number', account.number))(accountChart).normalBalance;
-      // console.log(normalB);
-      // console.log(accountChart);
-      switch (normalB) {
-        case 'cr':
-          if (raw.Amount > 0) {
-            newTransaction.debit = newTransaction.amount;
-          } else {
-            newTransaction.credit = newTransaction.amount;
-          }
-          break;
-        case 'dr':
-          if (raw.Amount > 0) {
-            newTransaction.debit = newTransaction.amount;
-          } else {
-            newTransaction.credit = newTransaction.amount;
-          }
-          break;
-        case 'dr/cr':
-          if (raw.Amount > 0) {
+    dr: {
 
-          } else {
-
-          }
-          break;
-        default:
-          break;
-      }
-      return newTransaction;
     },
+    cr: {
+      toStandard(raw, account) {
+        const newTransaction = R.clone(transactionTemplate);
+        newTransaction.amount = (raw.Amount);
+        newTransaction.account = raw.account;
+        newTransaction.folder = raw.folder;
+        newTransaction.transDate = raw['Trans Date'];
+        newTransaction.postDate = raw['Post Date'];
+        newTransaction.description = raw.Description;
+        newTransaction.accountObject = account;
+        if (raw.Amount > 0) {
+          newTransaction.debit = newTransaction.amount;
+        } else {
+          newTransaction.credit = newTransaction.amount;
+        }
+        return newTransaction;
+      },
+    },
+  },
+  amazon: {
+
   },
 };
 
@@ -93,7 +73,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       try {
         const account = context.rootState.Accounts.byId[transaction.account];
-        const newTransaction = transforms.chase.toStandard(transaction, account);
+        const normalB = R.find(R.propEq('number', account.number))(accountChart).normalBalance;
+        console.log(account);
+        const newTransaction = transforms.chase[normalB].toStandard(transaction, account);
         const id = context.commit('addTransaction', newTransaction);
         resolve(id);
       } catch (err) {

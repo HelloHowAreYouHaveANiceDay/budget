@@ -44,7 +44,7 @@ const mutations = {
 };
 
 const actions = {
-  addAccount(context, options) {
+  addAccount(context) {
     const account = {
       name: '',
       version: '0.0.1',
@@ -52,7 +52,6 @@ const actions = {
       folders: [
       ],
     };
-    console.log('ignore', options);
     context.commit('addAccount', account);
   },
   addFolderToAccount(context, payload) {
