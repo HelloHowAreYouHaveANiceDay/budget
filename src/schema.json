@@ -1,0 +1,107 @@
+ [
+  {
+    "name": "accounts",
+    "schema": {
+      "fields": [
+        {
+          "name": "id",
+          "title": "unique account id",
+          "type": "key",
+          "description": "unique identifier for the account. Linked to transactions",
+          "constraints": {
+            "required": true,
+            "unique": true
+          }
+        },
+        {
+          "name": "name",
+          "title": "Account Name",
+          "type": "string",
+          "description": "name of the account",
+          "constraints": {
+            "required": true
+          }
+        },
+        {
+          "name": "code",
+          "title": "Account Code",
+          "type": "string",
+          "description": "account code (use depends on standards)"
+        },
+        {
+          "name": "description",
+          "title": "description",
+          "type": "string",
+          "description": "description of account"
+        },
+        {
+          "name": "currency",
+          "title": "currency unit",
+          "type": "enum",
+          "description": "currency",
+          "constraints": {
+            "required": true,
+            "enum": [
+              "usd"
+            ]
+          }
+        },
+        {
+          "name": "notes",
+          "title": "notes",
+          "type": "string",
+          "description": "notes"
+        },
+        {
+          "name": "taxRelated",
+          "title": "tax related",
+          "type": "bool",
+          "description": "account is tax related"
+        },
+        {
+          "name": "placeholder",
+          "title": "placeholder account",
+          "type": "bool",
+          "description": "placeholder account that's not counted towards reports and statements"
+        },
+        {
+          "name": "type",
+          "title": "account type",
+          "type": "enum",
+          "description": "type of account. Affects account logic.",
+          "constraints":{
+            "required": true,
+            "enum": [
+              "income",
+              "expense",
+              "equity",
+              "trading",
+              "a/receivable",
+              "a/payable"
+            ]
+          }
+        },
+        {
+          "name": "parentAccount",
+          "title": "parent account",
+          "type": "foreignKey",
+          "description": "type of account. Affects account logic."
+        }
+      ],
+      "primaryKey": "id",
+      "foreignKeys": [
+        {
+          "fields": "parentAccount",
+          "reference": {
+            "resource": "accounts",
+            "fields": "id"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "transactions",
+    "schema": ""
+  }
+]

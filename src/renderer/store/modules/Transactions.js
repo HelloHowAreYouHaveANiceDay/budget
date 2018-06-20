@@ -1,48 +1,20 @@
 import Vue from 'vue';
-import R from 'ramda';
+// import R from 'ramda';
 import uuid from 'uuid/v4';
 
-import accountChart from '../../chartOfAccounts.json';
+// import accountChart from '../../chartOfAccounts.json';
 
-const transactionTemplate = {
-  account: null,
-  amount: null,
-  description: null,
-  postDate: null,
-  debit: null,
-  credit: null,
-  memo: null,
-  match: null,
-};
+// const transactionTemplate = {
+//   account: null,
+//   amount: null,
+//   description: null,
+//   postDate: null,
+//   debit: null,
+//   credit: null,
+//   memo: null,
+//   match: null,
+// };
 
-const transforms = {
-  chase: {
-    dr: {
-
-    },
-    cr: {
-      toStandard(raw, account) {
-        const newTransaction = R.clone(transactionTemplate);
-        newTransaction.amount = (raw.Amount);
-        newTransaction.account = raw.account;
-        newTransaction.folder = raw.folder;
-        newTransaction.transDate = raw['Trans Date'];
-        newTransaction.postDate = raw['Post Date'];
-        newTransaction.description = raw.Description;
-        newTransaction.accountObject = account;
-        if (raw.Amount > 0) {
-          newTransaction.debit = newTransaction.amount;
-        } else {
-          newTransaction.credit = newTransaction.amount;
-        }
-        return newTransaction;
-      },
-    },
-  },
-  amazon: {
-
-  },
-};
 
 const state = {
   byId: {},
@@ -75,20 +47,10 @@ const mutations = {
 };
 
 const actions = {
-  addTransaction(context, transaction) {
-    return new Promise((resolve, reject) => {
-      try {
-        const account = context.rootState.Accounts.byId[transaction.account];
-        const normalB = R.find(R.propEq('number', account.number))(accountChart).normalBalance;
-        console.log(account);
-        const newTransaction = transforms.chase[normalB].toStandard(transaction, account);
-        const id = context.commit('addTransaction', newTransaction);
-        resolve(id);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  },
+  // addTransaction(context, transaction) {
+  //   return new Promise((resolve, reject) => {
+  //   });
+  // },
 };
 
 export default {
